@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CLIENT_ID: 467bc6ba689d4bdb9d4bdbf15d9fdb64
-      CLIENT_SECRET: 55ee49a2-5083-4609-91f8-0fe73f763626
+      CLIENT_ID: 80375c64a93b4db38736e20969f37917
+      CLIENT_SECRET: idcscs-75ca14c7-a7f8-4b9e-85f0-6ff0442cd7a8
       DOMAIN_BASE_URL: ${{ secrets.DOMAIN_BASE_URL }}
       OCI_TENANCY: ${{ secrets.OCI_TENANCY }}
       OCI_REGION: ${{ secrets.OCI_REGION }}
