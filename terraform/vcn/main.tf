@@ -5,7 +5,7 @@ terraform {
     key = "tf_demo_native_backend.tfstate"
     workspace_key_prefix = "demo/"
     namespace = "id3kvohtwgjy"
-
+    config_file_profile = "upst"
   }
 }
 provider "oci" {
