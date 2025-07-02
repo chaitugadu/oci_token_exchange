@@ -6,6 +6,7 @@ terraform {
     workspace_key_prefix = "demo/"
     namespace = "id3kvohtwgjy"
     config_file_profile = "upst"
+    auth = "securitytoken"
   }
 }
 provider "oci" {
