@@ -134,6 +134,8 @@ jobs:
       - name: Set up Terraform
         if: env.success == 'true'
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.12.0
 
       - name: Terraform Init (VCN)
         if: env.success == 'true'
