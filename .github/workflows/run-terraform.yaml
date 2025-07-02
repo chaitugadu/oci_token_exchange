@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CLIENT_ID: "80375c64a93b4db38736e20969f37917"
-      CLIENT_SECRET: "idcscs-75ca14c7-a7f8-4b9e-85f0-6ff0442cd7a8"
-      DOMAIN_BASE_URL: "https://idcs-ff3532e3a9ba4bd7887f5cf49e2ae425.identity.oraclecloud.com"
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      DOMAIN_BASE_URL: ${{ secrets.DOMAIN_BASE_URL }}
       OCI_TENANCY: ${{ secrets.OCI_TENANCY }}
       OCI_REGION: ${{ secrets.OCI_REGION }}
 
@@ -55,11 +55,11 @@ jobs:
         id: upst
         continue-on-error: true
         run: |
-          AUTH_HEADER=$(printf "%s" "${CLIENT_ID}:${CLIENT_SECRET}" | base64 | tr -d '\n')
+          # AUTH_HEADER=$(printf "%s" "${CLIENT_ID}:${CLIENT_SECRET}" | base64 | tr -d '\n')
           # SUBJECT_TOKEN=$(tr -d '\n' < .oci/id-token.jwt)
           # PUBKEY=$(tr -d '\n' < .oci/public_key.one_line.pem)
 
-          # AUTH_HEADER=$(printf "%s" "${{ secrets.CLIENT_ID }}:${{ secrets.CLIENT_SECRET }}" | base64 | tr -d '\n')
+          AUTH_HEADER=$(printf "%s" "${{ secrets.CLIENT_ID }}:${{ secrets.CLIENT_SECRET }}" | base64 | tr -d '\n')
           SUBJECT_TOKEN=$(tr -d '\n' < .oci/id-token.jwt)
           PUBKEY=$(tr -d '\n' < .oci/public_key.one_line.pem)
 
