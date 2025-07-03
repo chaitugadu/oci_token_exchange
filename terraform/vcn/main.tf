@@ -1,7 +1,7 @@
 terraform {
   
   backend "oci" {
-    depends-on [ oci_core_virtual_network.fvass_vcn]
+    depends-on = [ oci_core_virtual_network.fvass_vcn]
     bucket = "bucket-tag"
     key = "tf_demo_native_backend.tfstate"
     workspace_key_prefix = "demo/"
