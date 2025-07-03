@@ -1,3 +1,11 @@
+terraform {
+  
+   backend "oci" {
+    bucket = "bucket-tag"
+    key = "tf_demo_native_backend.tfstate"
+    namespace = "id3kvohtwgjy"
+  }
+}
 provider "oci" {
   region               = var.region
   tenancy_ocid         = var.tenancy_ocid
