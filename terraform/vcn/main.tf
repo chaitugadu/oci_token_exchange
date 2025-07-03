@@ -13,7 +13,7 @@ terraform {
     skip_metadata_api_check     = true
     use_path_style              = true
 
-    endpoints = { s3 = "https://id3kvohtwgjy.compat.objectstorage.us-ashburn-1.oci-customer.oci.com" } 
+    endpoints = { s3 = "https://id3kvohtwgjy.compat.objectstorage.us-ashburn-1.oraclecloud.com" } 
   }
 }
 
