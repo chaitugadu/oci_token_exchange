@@ -109,7 +109,7 @@ jobs:
           FINGERPRINT=$(openssl rsa -pubout -outform DER -in $HOME/.oci/temp_private.pem 2>/dev/null | openssl md5 -c | awk '{print $2}')
           echo "FINGERPRINT=$FINGERPRINT" >> $GITHUB_OUTPUT
 
-          echo "[upst]" > $HOME/.oci/config
+          echo "[DEFAULT]" > $HOME/.oci/config
           echo "user=${{ secrets.USER_OCID }}" >> $HOME/.oci/config
           echo "region=${OCI_REGION}" >> $HOME/.oci/config
           echo "tenancy=${OCI_TENANCY}" >> $HOME/.oci/config
@@ -140,27 +140,16 @@ jobs:
       - name: Terraform Init (VCN)
         if: env.success == 'true'
         # try to use env vars instead of .oci/config
-        env:
-          TF_VAR_tenancy_ocid: ${{ secrets.OCI_TENANCY }}
-          TF_VAR_fingerprint: ${{ steps.oci_config.outputs.FINGERPRINT }}
         run: terraform init
         working-directory: terraform/vcn
 
       - name: Terraform Plan (VCN)
         if: env.success == 'true'
-        env:
-          OCI_CLI_PROFILE: upst
-          TF_VAR_tenancy_ocid: ${{ secrets.OCI_TENANCY }}
-          TF_VAR_fingerprint: ${{ steps.oci_config.outputs.FINGERPRINT }}
         run: terraform plan
         working-directory: terraform/vcn
 
       - name: Terraform Apply (VCN)
         if: env.success == 'true'
-        env:
-          OCI_CLI_PROFILE: upst
-          TF_VAR_tenancy_ocid: ${{ secrets.OCI_TENANCY }}
-          TF_VAR_fingerprint: ${{ steps.oci_config.outputs.FINGERPRINT }}
         run: terraform apply -auto-approve
         working-directory: terraform/vcn
 
