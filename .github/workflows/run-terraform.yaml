@@ -131,6 +131,10 @@ jobs:
             .oci/curl-command.sh
             .oci/upst.token
 
+      - name: Sleep for 30 seconds
+        run: sleep 60s
+        shell: bash
+        
       - name: Set up Terraform
         if: env.success == 'true'
         uses: hashicorp/setup-terraform@v3
