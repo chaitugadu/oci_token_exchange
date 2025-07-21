@@ -1,7 +1,7 @@
 terraform {
   
   backend "s3" {
-    bucket = "bucket-TE"
+    bucket = "TF-State-Token-Exchange"
     region = "us-ashburn-1"
     key = "tf_demo_native_backend.tfstate"
     use_lockfile = true
@@ -24,7 +24,7 @@ provider "oci" {
   config_file_profile  = "DEFAULT"
 }
 
-resource "oci_core_virtual_network" "fvass_vcn" {
+resource "oci_core_virtual_network" "Token_Exchange_vcn" {
   cidr_block     = var.vcn_cidr_block
   compartment_id = var.compartment_ocid
   display_name   = var.vcn_display_name
